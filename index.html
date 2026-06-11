@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dr. Tyler Panzner — Unlock Your Genetic Potential</title>
+<meta name="description" content="Precision-built wellness rooted in your DNA. Stop guessing — Dr. Tyler Panzner turns your genetics into a personalized plan so you feel better, faster." />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          pine: { DEFAULT: '#0c2620', deep: '#081b16', soft: '#143b30' },
+          bone: { DEFAULT: '#f4efe4', warm: '#ece4d3', dim: '#dcd2bd' },
+          lime: { DEFAULT: '#c8f04a', deep: '#a6d62f' },
+          plum: { DEFAULT: '#2c1a3d', deep: '#190d26', soft: '#3f2657' },
+          violet: { DEFAULT: '#9a6cff', deep: '#6d3fd4' },
+          clay: '#c9714b',
+          ink: '#10221d',
+        },
+        fontFamily: {
+          display: ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
+          sans: ['"Hanken Grotesk"', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  :root { --ease-spring: cubic-bezier(.16,1,.3,1); }
+
+  html { scroll-behavior: smooth; }
+  body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+  /* Grain overlay */
+  .grain::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: .045; mix-blend-mode: overlay; pointer-events: none;
+  }
+
+  .headline { letter-spacing: -0.035em; line-height: 0.96; }
+  .body-copy { line-height: 1.7; }
+
+  /* Buttons */
+  .btn { position: relative; transition: transform .4s var(--ease-spring), box-shadow .4s var(--ease-spring), background-color .3s ease; will-change: transform; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0) scale(.98); }
+  .btn-primary { box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 10px 24px -10px rgba(168,214,47,.6), 0 4px 10px -6px rgba(8,27,22,.4); }
+  .btn-primary:hover { box-shadow: 0 1px 0 rgba(255,255,255,.3) inset, 0 16px 34px -12px rgba(168,214,47,.7), 0 6px 14px -6px rgba(8,27,22,.5); }
+  .btn-ghost { transition: color .3s, border-color .3s, background-color .3s, transform .4s var(--ease-spring); }
+
+  :focus-visible { outline: 2.5px solid #c8f04a; outline-offset: 3px; border-radius: 6px; }
+
+  /* Helix animation */
+  @keyframes drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+  @keyframes spin-helix { to { transform: rotate(360deg); } }
+  .float-slow { animation: drift 9s ease-in-out infinite; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease-spring), transform .9s var(--ease-spring); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  .glass { background: rgba(244,239,228,.06); backdrop-filter: blur(12px); border: 1px solid rgba(244,239,228,.12); }
+
+  .marquee-track { animation: marquee 28s linear infinite; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  .underline-link { background-image: linear-gradient(currentColor,currentColor); background-size: 0% 1.5px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size .4s var(--ease-spring); }
+  .underline-link:hover { background-size: 100% 1.5px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+
+<body class="bg-bone text-pine font-sans antialiased selection:bg-lime selection:text-pine">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-pine focus:text-bone focus:px-5 focus:py-3 focus:rounded-full focus:font-semibold">Skip to content</a>
+
+<main id="main">
+
+<!-- ================= HERO — green + purple variant ================= -->
+<section id="top2" class="relative overflow-hidden bg-plum-deep text-bone grain min-h-screen flex items-center justify-center">
+  <!-- animated DNA double-helix background (WebGL) -->
+  <canvas aria-hidden="true" data-hue="96" class="dna-bg absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
+
+  <!-- layered radial glows (green + violet) -->
+  <div class="absolute inset-0 pointer-events-none z-[1]" aria-hidden="true"
+       style="background:
+        radial-gradient(55% 45% at 50% 8%, rgba(200,240,74,.13), transparent 60%),
+        radial-gradient(60% 60% at 14% 95%, rgba(109,63,212,.55), transparent 70%),
+        radial-gradient(62% 62% at 86% 92%, rgba(63,38,87,.9), transparent 70%),
+        radial-gradient(90% 80% at 50% -10%, rgba(63,38,87,.6), transparent 60%);"></div>
+
+  <!-- readability scrim so the helix never competes with the headline -->
+  <div class="absolute inset-0 pointer-events-none z-[5]" aria-hidden="true"
+       style="background: radial-gradient(60% 58% at 50% 50%, rgba(20,11,33,.9), rgba(20,11,33,.55) 55%, rgba(20,11,33,.14) 85%);"></div>
+
+  <!-- header — purple theme -->
+  <header class="absolute top-0 inset-x-0 z-30">
+    <nav class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between" aria-label="Primary (purple hero)">
+      <a href="#top2" class="flex items-center gap-3 group" aria-label="Dr. Tyler Panzner home">
+        <span class="grid place-items-center w-9 h-9 rounded-full bg-violet/25 text-lime transition-transform duration-500 group-hover:rotate-180" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 3c0 6 14 6 14 12M19 3c0 6-14 6-14 12M5 21c0-2 14-2 14 0M5 3c0-.4 14-.4 14 0"/><path d="M7 7h10M8 12h8M7 17h10" opacity=".7"/></svg>
+        </span>
+        <span class="font-display text-[17px] font-semibold tracking-tight leading-none">Dr.&nbsp;Tyler&nbsp;Panzner</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-8 text-[14.5px] font-medium text-bone">
+        <a href="#top2" class="underline-link">Home</a>
+        <a href="#about" class="underline-link">About</a>
+        <div class="relative group">
+          <button class="flex items-center gap-1 underline-link" aria-haspopup="true">Work with Us
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-transform duration-300 group-hover:rotate-180"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="absolute left-0 top-full pt-3 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-[opacity,transform,visibility] duration-300">
+            <div class="w-48 rounded-2xl bg-plum text-bone p-2 shadow-2xl shadow-plum-deep/60 border border-violet/20">
+              <a href="#process" class="block px-4 py-2.5 rounded-xl text-sm hover:bg-violet/20 transition-colors">One on One</a>
+              <a href="#process" class="block px-4 py-2.5 rounded-xl text-sm hover:bg-violet/20 transition-colors">Courses</a>
+            </div>
+          </div>
+        </div>
+        <div class="relative group">
+          <button class="flex items-center gap-1 underline-link" aria-haspopup="true">Resources
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-transform duration-300 group-hover:rotate-180"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="absolute left-0 top-full pt-3 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-[opacity,transform,visibility] duration-300">
+            <div class="w-48 rounded-2xl bg-plum text-bone p-2 shadow-2xl shadow-plum-deep/60 border border-violet/20">
+              <a href="#faq" class="block px-4 py-2.5 rounded-xl text-sm hover:bg-violet/20 transition-colors">FAQ</a>
+              <a href="#" class="block px-4 py-2.5 rounded-xl text-sm hover:bg-violet/20 transition-colors">Free Guides</a>
+              <a href="#" class="block px-4 py-2.5 rounded-xl text-sm hover:bg-violet/20 transition-colors">Podcasts</a>
+              <a href="#stories" class="block px-4 py-2.5 rounded-xl text-sm hover:bg-violet/20 transition-colors">Testimonials</a>
+            </div>
+          </div>
+        </div>
+        <a href="#newsletter" class="underline-link">Newsletter</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="#newsletter" class="btn hidden sm:inline-flex items-center gap-2 bg-violet text-bone hover:bg-violet-deep font-semibold text-[14px] px-5 py-2.5 rounded-full">Get Your Plan</a>
+        <button class="menuBtn lg:hidden grid place-items-center w-10 h-10 rounded-full text-bone hover:bg-bone/10 transition-colors" aria-label="Open menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="relative z-10 w-full max-w-4xl mx-auto px-5 sm:px-8 flex flex-col items-center text-center py-28">
+    <span class="reveal inline-flex items-center gap-2 text-[12.5px] tracking-[0.18em] uppercase font-semibold text-lime/90 mb-8">
+      <span class="w-8 h-px bg-violet/60"></span> Precision Genetic Health <span class="w-8 h-px bg-violet/60"></span>
+    </span>
+    <h1 class="reveal headline font-display font-bold text-[clamp(3rem,9vw,6.5rem)] text-bone">
+      Unlock your <span class="text-lime">genetic</span> potential.
+    </h1>
+    <p class="reveal mt-8 text-[clamp(1.15rem,2.2vw,1.45rem)] text-bone/85 font-display max-w-xl mx-auto">
+      Feel better, faster — by knowing exactly what your body needs.
+    </p>
+    <p class="reveal body-copy mt-6 text-[16.5px] text-bone/70 max-w-xl mx-auto">
+      Stop guessing. Your DNA holds the answers. We translate your unique genetics into a precise, personalized plan — no more cookie-cutter protocols, no more trial and error.
+    </p>
+
+    <div class="reveal mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#newsletter" class="btn btn-primary inline-flex items-center justify-center gap-2 bg-lime text-pine font-semibold text-[15.5px] px-7 py-4 rounded-full">
+        Get Your Personalized Plan
+      </a>
+      <a href="#about" class="btn btn-ghost inline-flex items-center justify-center gap-2 border border-violet/40 text-bone font-semibold text-[15.5px] px-7 py-4 rounded-full hover:bg-violet/15 hover:border-violet/60">
+        Meet Dr. Panzner
+      </a>
+    </div>
+
+    <dl class="reveal mt-14 flex flex-wrap justify-center gap-x-12 gap-y-6">
+      <div>
+        <dt class="font-display text-3xl font-bold text-lime">5</dt>
+        <dd class="text-[13px] text-bone/60 mt-1 max-w-[10rem] mx-auto">scientific disciplines behind every plan</dd>
+      </div>
+      <div>
+        <dt class="font-display text-3xl font-bold text-lime">1:1</dt>
+        <dd class="text-[13px] text-bone/60 mt-1 max-w-[10rem] mx-auto">coaching built on your biology</dd>
+      </div>
+      <div>
+        <dt class="font-display text-3xl font-bold text-lime">100%</dt>
+        <dd class="text-[13px] text-bone/60 mt-1 max-w-[10rem] mx-auto">rooted in your own DNA</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+</main>
+
+<!-- shared mobile menu overlay -->
+<div id="mobileMenu" class="hidden fixed inset-0 z-[80] bg-pine-deep/97 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 pt-6 flex items-center justify-between">
+    <span class="font-display text-[17px] font-semibold text-bone">Dr. Tyler Panzner</span>
+    <button id="menuClose" class="grid place-items-center w-10 h-10 rounded-full text-bone hover:bg-bone/10 transition-colors" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <nav class="max-w-7xl mx-auto px-6 mt-10 flex flex-col gap-1 text-bone font-display text-[28px] font-semibold" aria-label="Mobile">
+    <a href="#about" class="py-2">About</a>
+    <a href="#process" class="py-2">Work with Us</a>
+    <a href="#stories" class="py-2">Testimonials</a>
+    <a href="#faq" class="py-2">FAQ</a>
+    <a href="#newsletter" class="py-2">Newsletter</a>
+    <a href="#newsletter" class="btn btn-primary mt-6 inline-flex justify-center bg-lime text-pine px-6 py-3.5 rounded-full text-[17px]">Get Your Personalized Plan</a>
+  </nav>
+</div>
+
+<script>
+  // Mobile menu — shared overlay opened by either hero's header button
+  const menuBtns = document.querySelectorAll('.menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuClose = document.getElementById('menuClose');
+  const setMenu = (open) => {
+    if (!mobileMenu) return;
+    mobileMenu.classList.toggle('hidden', !open);
+    menuBtns.forEach(b => b.setAttribute('aria-expanded', String(open)));
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  menuBtns.forEach(b => b.addEventListener('click', () => setMenu(true)));
+  if (menuClose) menuClose.addEventListener('click', () => setMenu(false));
+  if (mobileMenu) mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+  // Scroll reveal with stagger
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        const siblings = [...e.target.parentElement.querySelectorAll('.reveal')];
+        e.target.style.transitionDelay = Math.min(siblings.indexOf(e.target), 4) * 90 + 'ms';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+<!-- ============================================================
+     DNA helix background — vanilla port of the DNAStrand WebGL
+     component, re-tuned to the brand palette (lime → green → teal).
+     Falls back gracefully to the pine-deep background if WebGL is
+     unavailable; honours prefers-reduced-motion; pauses off-screen.
+     ============================================================ -->
+<script>
+function initDNA(canvas) {
+  const gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: false, antialias: true });
+  if (!gl) return; // graceful fallback: brand background + radial glows remain
+
+  // Brand-tuned controls — calm + subtle; hue is set per-canvas via data-hue
+  const HUE = parseFloat(canvas.dataset.hue || '96'), SPEED = 0.3, INTENSITY = 0.9;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const vsrc = 'attribute vec2 aPosition; void main(){ gl_Position = vec4(aPosition,0.0,1.0); }';
+  const fsrc = [
+    'precision mediump float;',
+    'uniform vec2 iResolution; uniform float iTime; uniform float uHue; uniform float uSpeed; uniform float uIntensity;',
+    'vec3 hsv2rgb(vec3 c){ vec4 K=vec4(1.0,2.0/3.0,1.0/3.0,3.0); vec3 p=abs(fract(c.xxx+K.xyz)*6.0-K.www); return c.z*mix(K.xxx,clamp(p-K.xxx,0.0,1.0),c.y); }',
+    'float helix(vec2 uv,float offset,float twist){ float t=iTime*uSpeed+offset; float x=uv.x; float y=sin(x*8.0+t+twist)*0.25; float dist=abs(uv.y-y); float px=1.0/iResolution.y; float hw=0.0023; return smoothstep(hw+px, hw-px, dist); }',
+    'float connection(vec2 uv,float offset){ float t=iTime*uSpeed+offset; float x=uv.x; float y1=sin(x*8.0+t)*0.25; float y2=sin(x*8.0+t+3.14159)*0.25; float mid=(y1+y2)*0.5; float dist=abs(uv.y-mid); float m=mod(x*8.0+t,0.785); float win=smoothstep(0.15,0.0,m)*smoothstep(0.785,0.635,m); return smoothstep(0.0065,0.002,dist)*win; }',
+    'float basePair(vec2 uv,float offset){ float t=iTime*uSpeed+offset; float x=uv.x; float y1=sin(x*8.0+t)*0.25; float y2=sin(x*8.0+t+3.14159)*0.25; float m=mod(x*8.0+t,0.785); float show=smoothstep(0.15,0.0,m)*smoothstep(0.785,0.635,m); float d1=length(uv-vec2(x,y1)); float d2=length(uv-vec2(x,y2)); float s1=smoothstep(0.012,0.005,d1); float s2=smoothstep(0.012,0.005,d2); return (s1+s2)*show; }',
+    'void main(){',
+    '  vec2 uv=(gl_FragCoord.xy-0.5*iResolution.xy)/iResolution.y;',
+    '  float s1=helix(uv,0.0,0.0); float s2=helix(uv,0.0,3.14159);',
+    '  float line=max(s1,s2);',
+    '  vec3 ink=hsv2rgb(vec3(uHue/360.0,0.24,0.58));',
+    '  vec3 col=line*ink*uIntensity;',
+    '  float a=clamp(max(col.r,max(col.g,col.b)),0.0,1.0);',
+    '  gl_FragColor=vec4(col,a);',
+    '}'
+  ].join('\n');
+
+  function compile(src, type) {
+    const sh = gl.createShader(type);
+    gl.shaderSource(sh, src); gl.compileShader(sh);
+    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) { console.error('DNA shader:', gl.getShaderInfoLog(sh)); gl.deleteShader(sh); return null; }
+    return sh;
+  }
+  const vs = compile(vsrc, gl.VERTEX_SHADER), fs = compile(fsrc, gl.FRAGMENT_SHADER);
+  if (!vs || !fs) return;
+  const prog = gl.createProgram();
+  gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { console.error('DNA program:', gl.getProgramInfoLog(prog)); return; }
+  gl.useProgram(prog);
+
+  const verts = new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf); gl.bufferData(gl.ARRAY_BUFFER, verts, gl.STATIC_DRAW);
+  const aPos = gl.getAttribLocation(prog, 'aPosition');
+  gl.enableVertexAttribArray(aPos); gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+  const uRes = gl.getUniformLocation(prog, 'iResolution'), uTime = gl.getUniformLocation(prog, 'iTime'),
+        uHue = gl.getUniformLocation(prog, 'uHue'), uSpeed = gl.getUniformLocation(prog, 'uSpeed'), uInt = gl.getUniformLocation(prog, 'uIntensity');
+
+  gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = Math.max(1, Math.floor(canvas.clientWidth * dpr)), h = Math.max(1, Math.floor(canvas.clientHeight * dpr));
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+  }
+  function draw(elapsed) {
+    resize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.uniform2f(uRes, canvas.width, canvas.height);
+    gl.uniform1f(uTime, elapsed); gl.uniform1f(uHue, HUE); gl.uniform1f(uSpeed, SPEED); gl.uniform1f(uInt, INTENSITY);
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+  }
+
+  if (prefersReduced) { draw(2.0); window.addEventListener('resize', () => draw(2.0)); return; }
+
+  let raf = null, running = false, base = performance.now(), elapsed = 0, visible = true;
+  function loop(now) { elapsed = (now - base) / 1000.0; draw(elapsed); raf = requestAnimationFrame(loop); }
+  function start() { if (running) return; running = true; base = performance.now() - elapsed * 1000.0; raf = requestAnimationFrame(loop); }
+  function stop() { running = false; if (raf) cancelAnimationFrame(raf); raf = null; }
+
+  // pause when the hero is scrolled away or the tab is hidden
+  const io = new IntersectionObserver((es) => { visible = es[0].isIntersecting; (visible && !document.hidden) ? start() : stop(); }, { threshold: 0 });
+  io.observe(canvas);
+  document.addEventListener('visibilitychange', () => { document.hidden ? stop() : (visible && start()); });
+  window.addEventListener('resize', () => { if (!running) draw(elapsed); });
+
+  start();
+}
+document.querySelectorAll('.dna-bg').forEach(initDNA);
+</script>
+</body>
+</html>
